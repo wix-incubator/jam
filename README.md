@@ -1,8 +1,23 @@
 # jam
 
-A tool to produce html out of data and template specified in a single yaml file. Useful for generating homepage for Safari or a simple one page site.
+A tool for generating static HTML files. Basic setup allows to specify Jinja template and values that drive
+that template in a single yaml file.
 
-## Sample
+Advanced options:
+  * include CSS files into final HTML file
+  * specify template using url instead of inside yaml
+
+Useful for generating homepage for Safari or a simple one page site.
+
+## Usage
+
+Create a yaml file on your machine (see samples below), run jam.py to generate HTML file.
+
+```
+python3 jam.py path/to/page.yaml path/to/home.html
+```
+
+## Basic sample
 
 ```yaml
 data:
@@ -27,6 +42,38 @@ template:
       {% endfor %}
     </body>
   </html>
+```
+
+
+## Complex sample
+```yaml
+data:
+  title: Home
+  groups:
+    - name: Repositories
+      links:
+        - title: WOA engine
+          url: https://github.com/wix-private/wix-one-app-engine
+        - title: UI Lib (public)
+          url: https://github.com/wix/react-native-ui-lib/
+        - title: UI Lib (Wix)
+          url: 'https://github.com/wix-private/wix-react-native-ui-lib/'
+
+    - name: Deployment
+      links:
+        - title: POCO
+          url: https://bo.wix.com/wix-poco#/
+        - title: Team City
+          url: http://tc.dev.wixpress.com/
+
+    - name: Monitoring
+      links:
+        - title: New Relic
+          url: https://newrelic.com/
+
+template:
+  url: https://raw.githubusercontent.com/wix/jam/master/templates/overengineered-home.html.j2
+
 ```
 
 ## License
