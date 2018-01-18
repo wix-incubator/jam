@@ -3,10 +3,17 @@
   <head>
     <meta charset="utf-8">
     <title>{{data.title}}</title>
-    <style>{{data.style.font|download}}</style>
-    <style>{{data.style.normalize|download}}</style>
-    <style>{{data.style.milligram|download}}</style>
-    <style>{{data.style.customizations}}</style>
+    <style>{{"https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"|download}}</style>
+    <style>{{"https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css"|download}}</style>
+    <style>{{"https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css"|download}}</style>
+    <style>
+.group { display: flex; padding-top: 2rem; }
+.links { flex: 1; }
+.title { width: 15rem; font-size: 2rem; }
+.button { min-width: 18rem; }
+.searchform { display: flex; padding-top: 2rem; max-width: 70rem; }
+.button.button-outline:focus, .button.button-outline:hover { background-color: #ecdcf4; color: #9b4dca; }
+    </style>
   </head>
   <body>
     <main class="container">
