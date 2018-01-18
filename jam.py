@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-import os, sys
+import os, sys, requests
 from argparse import ArgumentParser, FileType
 from yaml import safe_load as load
-from jinja2 import Template
+from jinja2 import Template, Environment
 
 
 def main():
@@ -16,8 +16,14 @@ def main():
 
 def jam(input):
   config = load(input)
-  template = Template(config['template'])
+  env = Environment()
+  env.filters['download'] = download
+  template = env.from_string(config['template'])
   return template.render(data=config['data'])
+
+
+def download(url):
+    return requests.get(url).text
 
 
 if __name__ == "__main__":
