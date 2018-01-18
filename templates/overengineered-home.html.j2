@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{data.title}}</title>
+    <style>{{data.style.font|download}}</style>
+    <style>{{data.style.normalize|download}}</style>
+    <style>{{data.style.milligram|download}}</style>
+    <style>{{data.style.customizations}}</style>
+  </head>
+  <body>
+    <main class="container">
+      <form id="search" action="http://www.google.com/search" class="searchform" method="get" name="searchform" onsubmit="javascript:return ">
+        <input id="query" type="text" placeholder="Search with Google" class="form-controls search" required="required" autocomplete="on" name="q" autofocus>
+        <button class="button" type="submit">Search</button>
+      </form>
+      {% for group in data.groups %}
+      <section class="group">
+        <div class="title">{{group.name}}</div>
+        <div class="links">
+          {% for link in group.links %}
+          <a class="button button-outline" href="{{link.url}}">{{link.title}}</a>
+          {% endfor %}
+        </div>
+      </section>
+      {% endfor %}
+    </main>
+    <script>
+const urlMatcher = /(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-z]{2,5}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
+document.getElementById("search").onsubmit = function() {
+  const text = String(document.getElementById("query").value);
+  const urlWasEntered = urlMatcher.test(text);
+  if (urlWasEntered) {
+    const url = text.startsWith('http') ? text : 'https://' + text;
+    location.assign(url);
+  }
+  return !urlWasEntered;
+}
+    </script>
+  </body>
+</html>
