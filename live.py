@@ -15,7 +15,7 @@ def main():
 
   @app.route('/')
   def home():
-    return 'Add file to address'
+    return 'page url incomplete: filename missing'
 
   @app.route('/<file>')
   def preview(file):
