@@ -18,8 +18,16 @@ def jam(input):
   config = load(input)
   env = Environment()
   env.filters['download'] = download
-  template = env.from_string(config['template'])
+  template = env.from_string(get_template(config['template']))
   return template.render(data=config['data'])
+
+
+def get_template(template):
+  if isinstance(template, str):
+    return template
+  if isinstance(template, dict):
+    return download(template['url'])
+  raise ValueError('Does not support template of type %s' % type(template))
 
 
 def download(url):
