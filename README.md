@@ -50,26 +50,21 @@ template:
 data:
   title: Home
   groups:
-    - name: Repositories
+    - name: React Native
       links:
-        - title: WOA engine
-          url: https://github.com/wix-private/wix-one-app-engine
-        - title: UI Lib (public)
-          url: https://github.com/wix/react-native-ui-lib/
-        - title: UI Lib (Wix)
-          url: 'https://github.com/wix-private/wix-react-native-ui-lib/'
-
-    - name: Deployment
-      links:
-        - title: POCO
-          url: https://bo.wix.com/wix-poco#/
-        - title: Team City
-          url: http://tc.dev.wixpress.com/
+        - title: Flexbox
+          url: https://facebook.github.io/react-native/docs/flexbox.html
+        - title: Running On Device
+          url: https://facebook.github.io/react-native/docs/running-on-device.html
+        - title: Flatlist
+          url: https://facebook.github.io/react-native/docs/flatlist.html
 
     - name: Monitoring
       links:
         - title: New Relic
           url: https://newrelic.com/
+        - title: Sentry
+          url: https://sentry.io/
 
 template:
   url: https://raw.githubusercontent.com/wix/jam/master/templates/overengineered-home.html.j2
